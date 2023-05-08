@@ -1,6 +1,7 @@
 const express = require('express');
 const authRoute = require('./auth.route');
 const userRoute = require('./user.route');
+const visitorRoute = require('./visitor.route');
 const rasaRoute = require('./rasa.route');
 const docsRoute = require('./docs.route');
 const renderRoute = require('./docs.route');
@@ -24,6 +25,10 @@ const defaultRoutes = [
   {
     path: '/rasa',
     route: rasaRoute,
+  },
+  {
+    path: '/visitors',
+    route: visitorRoute,
   },
 ];
 

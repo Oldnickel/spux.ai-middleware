@@ -10,18 +10,42 @@
         this.init();
     }
 
+    function createSweetAlert() {
+        let jsFile = 'https://cdn.jsdelivr.net/npm/sweetalert2@11'
+        //let styleFile = './sweetalert2/dist/sweetalert2.min.css'
+        //var link = document.createElement("link");
+        var script = document.createElement("script");
+
+        // Set the attributes of the link element
+        //link.href = styleFile;
+        //link.rel = "stylesheet";
+        //link.type = "text/css";
+
+        script.src = jsFile;
+
+        // Add the link element to the head section of the document
+        document.head.appendChild(script);
+        //document.head.appendChild(link);
+    }
+
 
     /*** Public Methods */
 
     myPlugin.prototype.init = function () {
         console.log('Init plugin.');
-        createModal()
+        //createModal()
+        createSweetAlert();
         build.call(this);
     }
 
 
     myPlugin.prototype.update = function (element) {
         console.log('Update plugin.');
+    }
+
+    this.myPlugin.prototype.getCookies = function (elements) {
+        console.log('elements cookie getter: ', elements);
+
     }
 
     myPlugin.prototype.beforeunload = function (element) {
