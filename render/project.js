@@ -36,13 +36,60 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
-    var buttons = document.querySelectorAll('button[name="addtocart"]');
+
+    var buttons = document.querySelectorAll('button[name="cart-button"]');
 
     // Add a click event listener to each button
     for (var i = 0; i < buttons.length; i++) {
         buttons[i].addEventListener('click', function () {
             // Handle button click event here
-            Swal.fire('Button clicked!');
+            Swal.fire({
+                title: 'Error!',
+                text: 'Do you need help with this product?',
+                icon: 'info',
+                confirmButtonText: 'Yes, i need help.',
+                denyButtonText: 'No, i\'m okay.',
+                toast: true,
+                position: 'bottom-end',
+                timer: 10000,
+                timerProgressBar: true,
+                showConfirmButton: true,
+                showDenyButton: true,
+                preConfirm: () => {
+                    const data = {
+                        message: 'accept_product_feedback',
+                        sender: localStorage.getItem('salesBotCookie')
+                    }
+                    return fetch('http://localhost:3005/v1/rasa/chat', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    })
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error(response.statusText)
+                            }
+                            return response.json()
+                        })
+                        .catch(error => {
+                            Swal.showValidationMessage(
+                                `Request failed: ${error}`
+                            )
+                        })
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    console.log('result: ', result);
+
+                    Swal.fire({
+                        title: 'Thank You!',
+                        text: result.value[0].text
+                    })
+                }
+            })
         });
     }
 
@@ -215,4 +262,40 @@ function findVisitor(visitorID) {
 
         xhr.send(JSON.stringify(data));
     });
+}
+
+
+function swalWithQuestion(question) {
+    Swal.fire({
+        title: question,
+        input: 'text',
+        inputAttributes: {
+            autocapitalize: 'off'
+        },
+        showCancelButton: true,
+        confirmButtonText: 'Look up',
+        showLoaderOnConfirm: true,
+        preConfirm: (login) => {
+            return fetch(`http://localhost:3005/v1/rasa/chat`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(response.statusText)
+                    }
+                    return response.json()
+                })
+                .catch(error => {
+                    Swal.showValidationMessage(
+                        `Request failed: ${error}`
+                    )
+                })
+        },
+        allowOutsideClick: () => !Swal.isLoading()
+    }).then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire({
+                title: `${result.value.login}'s avatar`,
+                imageUrl: result.value.avatar_url
+            })
+        }
+    })
 }
