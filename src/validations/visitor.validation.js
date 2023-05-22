@@ -19,5 +19,13 @@ const search = {
     }),
 };
 
+const getAllVisitors = {
+    body: Joi.object().keys({
+        verification: Joi.string().required()
+    }),
+};
 
-module.exports = { create, update, search };
+
+
+
+module.exports = { create, update, search, getAllVisitors };

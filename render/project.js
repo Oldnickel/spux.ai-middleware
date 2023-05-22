@@ -2,7 +2,8 @@
 
 var elements;
 
-document.addEventListener('DOMContentLoaded', function () {
+const midURL = 'http://192.168.88.31:3005'
+document.addEventListener('DOMContentLoaded', async function () {
     elements = new myPlugin();
 
     window.addEventListener('scroll', function () {
@@ -23,11 +24,12 @@ document.addEventListener('DOMContentLoaded', function () {
         e.returnValue = '';
         // Return the message to display
         //return 'Are you sure you want to leave this page?';
+        return true;
     });
 
     window.addEventListener('unload', function () {
         console.log('unloaded');
-        return false;
+        return true;
     })
 
     window.addEventListener('resize', function () {
@@ -35,7 +37,10 @@ document.addEventListener('DOMContentLoaded', function () {
         return true;
     });
 
+    const userInfo = await getUserInfo();
+    console.log(userInfo);
 
+    postNewMetaData(userInfo)
 
     var buttons = document.querySelectorAll('button[name="cart-button"]');
 
@@ -60,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         message: 'accept_product_feedback',
                         sender: localStorage.getItem('salesBotCookie')
                     }
-                    return fetch('http://localhost:3005/v1/rasa/chat', {
+                    return fetch(midURL + '/v1/rasa/chat', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'
@@ -90,13 +95,14 @@ document.addEventListener('DOMContentLoaded', function () {
                     })
                 }
             })
+            return true;
         });
     }
 
     console.log('navigator: ', navigator);
 
     checkIfCookieIsSet();
-
+    return true;
 });
 
 
@@ -134,7 +140,6 @@ async function setOrReadCookie() {
         setCookie();
     }
 }
-
 async function setCookie() {
     const newVisitorID = generateUniqueId();
     localStorage.setItem('salesBotCookie', newVisitorID);
@@ -169,7 +174,7 @@ const registerNewVisitorAccess = (visitorID, currentVisits) => {
 function updateVisitor(visitorID, visits) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        const url = 'http://localhost:3005/v1/visitors/update';
+        const url = midURL + '/v1/visitors/update';
 
         const data = {
             visitorID: visitorID,
@@ -198,7 +203,7 @@ function updateVisitor(visitorID, visits) {
 function postNewVisitor(visitorID, visits, action) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        const url = 'http://localhost:3005/v1/visitors/create';
+        const url = midURL + '/v1/visitors/create';
 
         const data = {
             visitorID: visitorID
@@ -226,7 +231,7 @@ function postNewVisitor(visitorID, visits, action) {
 function findVisitor(visitorID) {
     return new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
-        const url = 'http://localhost:3005/v1/visitors/find';
+        const url = midURL + '/v1/visitors/find';
 
         const data = {
             visitorID: visitorID
@@ -264,6 +269,26 @@ function findVisitor(visitorID) {
     });
 }
 
+function postNewMetaData(userInfo) {
+    var xhr = new XMLHttpRequest();
+    xhr.open('POST', midURL + '/v1/metadata/create', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                console.log('Metadata created successfully:', xhr.responseText);
+            } else {
+                console.error('Error creating metadata:', xhr.status, xhr.statusText);
+            }
+        }
+    };
+
+    xhr.send(JSON.stringify(userInfo));
+}
+
+
+
 
 function swalWithQuestion(question) {
     Swal.fire({
@@ -276,7 +301,7 @@ function swalWithQuestion(question) {
         confirmButtonText: 'Look up',
         showLoaderOnConfirm: true,
         preConfirm: (login) => {
-            return fetch(`http://localhost:3005/v1/rasa/chat`)
+            return fetch(`${midURL}/v1/rasa/chat`)
                 .then(response => {
                     if (!response.ok) {
                         throw new Error(response.statusText)
@@ -299,3 +324,39 @@ function swalWithQuestion(question) {
         }
     })
 }
+
+async function getUserInfo() {
+    var userAgent = navigator.userAgent;
+    var platform = navigator.platform;
+
+    var browser = await getBrowserName(userAgent);
+    var isMobile = isMobileDevice(userAgent);
+
+    var userInfo = {
+        os: platform,
+        browser: browser,
+        isMobile: isMobile,
+        platform: platform
+    };
+
+    return userInfo;
+}
+
+function getBrowserName(userAgent) {
+    // Check for popular browsers and return their names
+    if (userAgent.indexOf("Chrome") !== -1) return "Google Chrome";
+    if (userAgent.indexOf("Firefox") !== -1) return "Mozilla Firefox";
+    if (userAgent.indexOf("Safari") !== -1) return "Apple Safari";
+    if (userAgent.indexOf("Opera") !== -1) return "Opera";
+    if (userAgent.indexOf("Edge") !== -1) return "Microsoft Edge";
+    if (userAgent.indexOf("Trident") !== -1) return "Internet Explorer";
+
+    // If the browser is not recognized, return the user agent string
+    return userAgent;
+}
+
+function isMobileDevice(userAgent) {
+    // Check if user agent contains keywords indicating a mobile device
+    return /Mobi|Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+}
+

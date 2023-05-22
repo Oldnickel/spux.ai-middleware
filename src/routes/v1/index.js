@@ -4,6 +4,7 @@ const userRoute = require('./user.route');
 const visitorRoute = require('./visitor.route');
 const emailCollectorRoute = require('./emailCollector.route');
 const rasaRoute = require('./rasa.route');
+const metadataRoute = require('./metadata.route');
 const docsRoute = require('./docs.route');
 const renderRoute = require('./docs.route');
 const config = require('../../config/config');
@@ -34,6 +35,10 @@ const defaultRoutes = [
   {
     path: '/emailCollector',
     route: emailCollectorRoute,
+  },
+  {
+    path: '/metadata',
+    route: metadataRoute,
   },
 ];
 

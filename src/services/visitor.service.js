@@ -38,6 +38,11 @@ const getVisitorById = async (visitorID) => {
     return Visitor.findOne({ visitorID });
 };
 
+const getAllVisitors = async () => {
+    //console.log('visitorID: ', visitorID);
+    return Visitor.find({});
+};
+
 /**
  * Get user by email
  * @param {string} email
@@ -80,4 +85,5 @@ module.exports = {
     getVisitorById,
     updateVisitorById,
     deleteVisitorById,
+    getAllVisitors
 };

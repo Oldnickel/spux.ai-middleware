@@ -25,6 +25,12 @@ const getVisitor = catchAsync(async (req, res) => {
     res.send(visitor);
 });
 
+const getAllVisitors = catchAsync(async (req, res) => {
+    //console.log('get visitor', req.body);
+    const visitors = await visitorService.getAllVisitors();
+    res.send(visitors);
+});
+
 const updateVisitor = catchAsync(async (req, res) => {
     const visitor = await visitorService.updateVisitorById(req.body.visitorID, req.body);
     res.send(visitor);
@@ -41,4 +47,5 @@ module.exports = {
     getVisitor,
     updateVisitor,
     deleteVisitor,
+    getAllVisitors
 };

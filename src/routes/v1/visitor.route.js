@@ -8,5 +8,6 @@ const router = express.Router();
 router.post('/update', validate(visitorValidation.update), visitorController.updateVisitor);
 router.post('/create', validate(visitorValidation.create), visitorController.createVisitor);
 router.post('/find', validate(visitorValidation.search), visitorController.getVisitor);
+router.post('/all', validate(visitorValidation.getAllVisitors), visitorController.getAllVisitors);
 
 module.exports = router;
