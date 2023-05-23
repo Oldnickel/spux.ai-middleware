@@ -2,7 +2,7 @@
 
 var elements;
 
-const midURL = 'http://192.168.88.31:3005'
+const midURL = 'https://salesym.aiceafrica.com'
 document.addEventListener('DOMContentLoaded', async function () {
     elements = new myPlugin();
 
