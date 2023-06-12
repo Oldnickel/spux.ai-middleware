@@ -5,3 +5,4 @@ module.exports.emailCollectorValidation = require('./emailCollector.validation')
 module.exports.rasaValidation = require('./rasa.validation');
 module.exports.metadataValidation = require('./metadata.validation');
 module.exports.websiteValidation = require('./website.validation');
+module.exports.planValidation = require('./plan.validation');

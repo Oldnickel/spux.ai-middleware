@@ -13,7 +13,7 @@ const createWebsite = async (websiteBody) => {
 
 const getWebsiteById = async (websiteID) => {
     console.log('websiteID: ', websiteID);
-    return Visitor.findOne({ websiteID });
+    return Website.findOne({ websiteID });
 };
 
 

@@ -7,3 +7,4 @@ module.exports.emailCollectorService = require('./emailCollector.service');
 module.exports.rasaService = require('./rasa.service');
 module.exports.metadataService = require('./metadata.service');
 module.exports.websiteService = require('./websites.service');
+module.exports.planService = require('./plan.service');

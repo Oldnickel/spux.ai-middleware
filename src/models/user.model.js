@@ -40,6 +40,12 @@ const userSchema = mongoose.Schema(
       enum: roles,
       default: 'user',
     },
+    plan: {
+      type: String,
+      planID: String,
+      default: 'none',
+      expiryDate: 'String'
+    },
     isEmailVerified: {
       type: Boolean,
       default: false,
