@@ -38,6 +38,13 @@ const getPlansByID = catchAsync(async (req, res) => {
     res.send(plan);
 });
 
+const getPlansByName = catchAsync(async (req, res) => {
+    //console.log('get plan', req.body);
+    const plan = await planService.getPlanByName(req.body.planName);
+    console.log('plan: ', plan);
+    res.send(plan);
+});
+
 const updatePlan = catchAsync(async (req, res) => {
     const plan = await planService.updatePlanById(req.body.planID, req.body);
     res.send(plan);
@@ -55,5 +62,6 @@ module.exports = {
     updatePlan,
     deletePlan,
     getAllPlans,
-    getPlansByID
+    getPlansByID,
+    getPlansByName
 };

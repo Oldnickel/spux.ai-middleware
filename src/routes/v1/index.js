@@ -7,6 +7,7 @@ const rasaRoute = require('./rasa.route');
 const metadataRoute = require('./metadata.route');
 const websitesRoute = require('./websites.route');
 const planRoute = require('./plan.route');
+const paypalRoute = require('./paypal.route');
 const docsRoute = require('./docs.route');
 const renderRoute = require('./docs.route');
 const config = require('../../config/config');
@@ -49,6 +50,10 @@ const defaultRoutes = [
   {
     path: '/plan',
     route: planRoute,
+  },
+  {
+    path: '/paypal',
+    route: paypalRoute,
   },
 ];
 

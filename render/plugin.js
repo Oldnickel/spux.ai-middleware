@@ -1,5 +1,7 @@
-(function () {
+(function (d, t) {
     /*** Register plugin in window object */
+
+    console.log('d: ', d);
 
     this.myPlugin = function () {
         let defaults = {};
@@ -35,6 +37,7 @@
         console.log('Init plugin.');
         //createModal()
         createSweetAlert();
+
         build.call(this);
     }
 

@@ -40,11 +40,33 @@ const userSchema = mongoose.Schema(
       enum: roles,
       default: 'user',
     },
-    plan: {
+    planID: {
       type: String,
-      planID: String,
-      default: 'none',
-      expiryDate: 'String'
+      default: 'none'
+    },
+    planExpiry: {
+      type: String,
+      default: 'none'
+    },
+    planStatus: {
+      type: Boolean,
+      default: false
+    },
+    websiteLimit: {
+      type: Number,
+      default: 0
+    },
+    trafficLimit: {
+      type: Number,
+      default: 0
+    },
+    followUpLimit: {
+      type: Number,
+      default: 0
+    },
+    interactionsLimit: {
+      type: Number,
+      default: 0
     },
     isEmailVerified: {
       type: Boolean,

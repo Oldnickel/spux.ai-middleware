@@ -8,7 +8,7 @@ const Joi = require('joi');
     }),
 }; */
 
-const create = {
+/* const create = {
     body: Joi.object().keys({
         plan: Joi.string().required(),
         trafficLimit: Joi.number().required(),
@@ -18,42 +18,31 @@ const create = {
         price: Joi.number().required(),
         description: Joi.string(),
     }),
-};
+}; */
 
-const search = {
+const access_token = {
     body: Joi.object().keys({
-        planID: Joi.string()
+        validation: Joi.string(),
     }),
 };
 
-const getAllPlans = {
+const plans = {
     body: Joi.object().keys({
-        verification: Joi.string().required()
+        validation: Joi.string(),
     }),
 };
 
-const getPlanByID = {
+const subscribe = {
     body: Joi.object().keys({
-        id: Joi.string().required()
-    }),
-};
-const getPlanByName = {
-    body: Joi.object().keys({
-        planName: Joi.string().required()
-    }),
-};
-
-const queryPlans = {
-    query: Joi.object().keys({
-        plan: Joi.string(),
-        planID: Joi.string(),
-        sortBy: Joi.string(),
-        limit: Joi.number().integer(),
-        page: Joi.number().integer(),
+        firstName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        lastName: Joi.string().required(),
+        email: Joi.string().required(),
+        plan_id: Joi.string().required(),
     }),
 };
 
 
 
 
-module.exports = { create, search, getAllPlans, queryPlans, getPlanByID, getPlanByName };
+module.exports = { access_token, subscribe, plans };

@@ -16,6 +16,12 @@ const getPlanById = async (planID) => {
     return Plan.findById(planID);
 };
 
+const getPlanByName = async (planName) => {
+
+    console.log('planName: ', planName);
+    return Plan.findOne({ plan: planName });
+};
+
 
 const queryPlans = async (filter, options) => {
     const plans = await Plan.paginate(filter, options);
@@ -52,5 +58,6 @@ module.exports = {
     getPlanById,
     updatePlanById,
     deletePlanById,
-    getAllPlans
+    getAllPlans,
+    getPlanByName
 };

@@ -6,3 +6,4 @@ module.exports.rasaController = require('./rasa.controller');
 module.exports.metadataController = require('./metadata.controller');
 module.exports.websitesController = require('./website.controller');
 module.exports.planController = require('./plan.controller');
+module.exports.paypalController = require('./paypal.controller');

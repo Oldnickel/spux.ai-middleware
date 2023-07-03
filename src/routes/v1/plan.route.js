@@ -10,5 +10,6 @@ router.post('/create', validate(planValidation.create), planController.createPla
 router.post('/search', validate(planValidation.queryPlans), planController.queryPlans);
 router.post('/all', validate(planValidation.getAllPlans), planController.getAllPlans);
 router.post('/id', validate(planValidation.getPlanByID), planController.getPlansByID);
+router.post('/find', validate(planValidation.getPlanByName), planController.getPlansByName);
 
 module.exports = router;

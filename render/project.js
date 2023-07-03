@@ -258,6 +258,7 @@ function findVisitor(visitorID) {
                 } */
             } else {
                 reject(new Error('Request failed: ' + xhr.statusText));
+                console.log('xhr.statusText: ', xhr.statusText);
             }
         };
 
@@ -268,6 +269,21 @@ function findVisitor(visitorID) {
         xhr.send(JSON.stringify(data));
     });
 }
+
+(function (d, t) {
+    var BASE_URL = "https://app.chatwoot.com";
+    var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
+    g.src = BASE_URL + "/packs/js/sdk.js";
+    g.defer = true;
+    g.async = true;
+    s.parentNode.insertBefore(g, s);
+    g.onload = function () {
+        window.chatwootSDK.run({
+            websiteToken: 'sQdA8rPaQbvFwVoo3GjJCQdx',
+            baseUrl: BASE_URL
+        })
+    }
+})(document, "script");
 
 function postNewMetaData(userInfo) {
     var xhr = new XMLHttpRequest();
