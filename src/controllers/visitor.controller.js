@@ -20,9 +20,11 @@ const getVisitor = catchAsync(async (req, res) => {
     console.log('get visitor', req.body);
     const visitor = await visitorService.getVisitorById(req.body.visitorID);
     if (!visitor) {
-        throw new ApiError(httpStatus.NOT_FOUND, 'Visitor not found');
+        res.send('visitor not found')
+        //throw new ApiError(httpStatus.NOT_FOUND, 'Visitor not found');
+    } else {
+        res.send(visitor);
     }
-    res.send(visitor);
 });
 
 const getAllVisitors = catchAsync(async (req, res) => {
