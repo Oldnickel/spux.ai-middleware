@@ -7,3 +7,4 @@ module.exports.metadataController = require('./metadata.controller');
 module.exports.websitesController = require('./website.controller');
 module.exports.planController = require('./plan.controller');
 module.exports.paypalController = require('./paypal.controller');
+module.exports.chatController = require('./chat.controller');

@@ -8,6 +8,8 @@ const metadataRoute = require('./metadata.route');
 const websitesRoute = require('./websites.route');
 const planRoute = require('./plan.route');
 const paypalRoute = require('./paypal.route');
+const captureRoute = require('./capture.route');
+const chatRoute = require('./chat.route');
 const docsRoute = require('./docs.route');
 const renderRoute = require('./docs.route');
 const config = require('../../config/config');
@@ -54,6 +56,14 @@ const defaultRoutes = [
   {
     path: '/paypal',
     route: paypalRoute,
+  },
+  {
+    path: '/capture',
+    route: captureRoute,
+  },
+  {
+    path: '/chat',
+    route: chatRoute,
   },
 ];
 

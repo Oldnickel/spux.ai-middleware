@@ -3,13 +3,16 @@ const Joi = require('joi');
 const update = {
     body: Joi.object().keys({
         visitorID: Joi.string().required(),
-        visits: Joi.number().required(),
+        timestamp: Joi.string(),
+        pageUrl: Joi.string(),
     }),
 };
 
 const create = {
     body: Joi.object().keys({
-        visitorID: Joi.string().required()
+        visitorID: Joi.string().required(),
+        timestamp: Joi.string(),
+        pageUrl: Joi.string(),
     }),
 };
 

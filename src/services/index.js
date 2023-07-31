@@ -9,3 +9,5 @@ module.exports.metadataService = require('./metadata.service');
 module.exports.websiteService = require('./websites.service');
 module.exports.planService = require('./plan.service');
 module.exports.paypalService = require('./paypal.service');
+module.exports.captureService = require('./capture.service');
+module.exports.chatService = require('./chat.service');

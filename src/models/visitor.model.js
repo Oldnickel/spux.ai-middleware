@@ -13,6 +13,14 @@ const visitorSchema = mongoose.Schema(
         visits: {
             type: Number,
             default: 1,
+        },
+        timestamp: {
+            type: String,
+            default: 'not set'
+        },
+        pageUrl: {
+            type: String,
+            default: 'not set'
         }
     },
     {

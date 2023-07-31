@@ -7,3 +7,5 @@ module.exports.metadataValidation = require('./metadata.validation');
 module.exports.websiteValidation = require('./website.validation');
 module.exports.planValidation = require('./plan.validation');
 module.exports.paypalValidation = require('./paypal.validation');
+module.exports.captureValidation = require('./capture.validation');
+module.exports.chatValidation = require('./chat.validation');

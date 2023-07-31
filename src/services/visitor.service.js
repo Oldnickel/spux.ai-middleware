@@ -56,11 +56,15 @@ const getAllVisitors = async () => {
  * @returns {Promise<User>}
  */
 const updateVisitorById = async (visitorID, updateBody) => {
+    console.log("logging visit", visitorID, updateBody);
     const visitor = await getVisitorById(visitorID);
     if (!visitor) {
+        createVisitor(updateBody);
         return false;
     }
     Object.assign(visitor, updateBody);
+    visitor.visits = visitor.visits + 1;
+    console.log('visitor: ', visitor);
     await visitor.save();
     return visitor;
 };
