@@ -149,7 +149,7 @@
 
         chatwootScript.onload = function () {
             window.chatwootSDK.run({
-                websiteToken: 'Xk6N6QWiNSECau2duszhuSaz', // Replace with your Chatwoot website token
+                websiteToken: 'urfwPZD2euXcHgpWA5vaDycS', // Replace with your Chatwoot website token
                 baseUrl: 'https://app.chatwoot.com',
             });
         };
