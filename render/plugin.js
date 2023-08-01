@@ -1,6 +1,6 @@
 (function () {
     // Define the Node.js app URL
-    const nodeAppUrl = 'http://127.0.0.1:9999';
+    const nodeAppUrl = 'https://salesym.aiceafrica.com';
 
     // Function to generate a random unique ID for visitors
     function generateVisitorId() {
@@ -149,7 +149,7 @@
 
         chatwootScript.onload = function () {
             window.chatwootSDK.run({
-                websiteToken: 'UWqWBKL3EFapQhhs8n4b3uHA', // Replace with your Chatwoot website token
+                websiteToken: 'zhnSDt9g6PfjaZkn5jfey5ih', // Replace with your Chatwoot website token
                 baseUrl: 'https://app.chatwoot.com',
             });
         };
