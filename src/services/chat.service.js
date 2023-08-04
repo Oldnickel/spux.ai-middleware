@@ -12,7 +12,28 @@ const findProducts = async (productName) => {
     //console.log('products: ', products);
 
     if (products) {
-        return products;
+        const richCardMessage = {
+            fulfillmentMessages: [
+                {
+                    card: {
+                        title: `Product Information - ${productName}`,
+                        subtitle: productInfo.description,
+                        imageUri: productInfo.imageURL,
+                        buttons: [
+                            {
+                                text: "Buy Now",
+                                postback: `https://example.com/buy-product/${productInfo.id}`,
+                            },
+                            {
+                                text: "More Details",
+                                postback: `https://example.com/product-details/${productInfo.id}`,
+                            },
+                        ],
+                    },
+                },
+            ],
+        };
+        return res.json(fulfillmentMessages);
     } else {
         return 'No products matching your query have been found.';
     }
