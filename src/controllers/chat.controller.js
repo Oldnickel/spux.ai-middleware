@@ -8,6 +8,7 @@ const findProducts = catchAsync(async (req, res) => {
     const productName = req.body.queryResult.parameters.product;
     console.log('productName: ', productName);
     const products = await chatService.findProducts(productName);
+    console.log('products control: ', products);
     res.json(products);
 });
 
