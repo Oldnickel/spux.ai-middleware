@@ -156,7 +156,7 @@
     }
 
     (function (d, t) {
-        var BASE_URL = "https://app.chatwoot.com";
+        var BASE_URL = "https://chatbot.aiceafrica.com";
         var g = d.createElement(t), s = d.getElementsByTagName(t)[0];
         g.src = BASE_URL + "/packs/js/sdk.js";
         g.defer = true;
@@ -164,7 +164,7 @@
         s.parentNode.insertBefore(g, s);
         g.onload = function () {
             window.chatwootSDK.run({
-                websiteToken: 'urfwPZD2euXcHgpWA5vaDycS',
+                websiteToken: 'BD3wJG7a9bm3FA7hc6spfHfv',
                 baseUrl: BASE_URL
             })
         }
