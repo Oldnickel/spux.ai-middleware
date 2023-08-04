@@ -1,9 +1,7 @@
 const Joi = require('joi');
 
 const findProducts = {
-    body: Joi.object().keys({
-        queryResult: Joi.object().required(),
-    }),
+    body: Joi.object(),
 };
 
 const saveProduct = Joi.object();
