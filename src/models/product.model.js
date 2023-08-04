@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { toJSON, paginate } = require('./plugins');
 // Define a generic schema for products
-const productSchema = new mongoose.Schema(
+const productSchema = mongoose.Schema(
     {
         // Common fields that all products might have
         name: { type: String, required: true },

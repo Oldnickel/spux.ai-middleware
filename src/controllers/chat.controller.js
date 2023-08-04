@@ -8,7 +8,7 @@ const findProducts = catchAsync(async (req, res) => {
     const productName = req.body.queryResult.parameters.product;
     console.log('productName: ', productName);
     const products = await chatService.findProducts(productName);
-    res.send(products);
+    res.json(products);
 });
 
 const saveProduct = catchAsync(async (req, res) => {
