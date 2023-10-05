@@ -7,7 +7,7 @@ const { chatService } = require('../services');
 const findProducts = catchAsync(async (req, res) => {
     console.log('request body: ', req.body);
     console.log('request header: ', req.headers);
-    const productName = req.body.queryResult.parameters.product;
+    const productName = req.body.queryResult.parameters.Objects;
     console.log('productName: ', productName);
     const products = await chatService.findProducts(productName);
     console.log('products control: ', products);
