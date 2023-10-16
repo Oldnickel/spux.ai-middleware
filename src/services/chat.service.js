@@ -19,7 +19,7 @@ const findProducts = async (productName) => {
                     card: {
                         title: `Product Information - ${productInfo.name}`,
                         subtitle: productInfo.brand,
-                        imageUri: 'https://www.amazon.com/Mandala-Colouring-Adults-Paperback-Editorial/dp/938653861X/ref=sr_1_2?crid=6TCCO58SIOL6&keywords=mandala&qid=1697460852&sprefix=manda%2Caps%2C345&sr=8-2',
+                        imageUri: 'https://m.media-amazon.com/images/I/81MM6iM6TLL._SY522_.jpg',
                         buttons: [
                             {
                                 text: "Buy Now",
