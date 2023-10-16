@@ -19,11 +19,11 @@ const findProducts = async (productName) => {
                     card: {
                         title: `Product Information - ${productInfo.name}`,
                         subtitle: productInfo.brand,
-                        imageUri: 'https://salesmate.aiceafrica.com/_next/image?url=https%3A%2F%2Fcdn.shopify.com%2Fs%2Ffiles%2F1%2F0754%2F8144%2F8724%2Ffiles%2Fmockup-de719380.webp%3Fv%3D1682956169&w=2048&q=75',
+                        imageUri: 'https://www.amazon.com/Mandala-Colouring-Adults-Paperback-Editorial/dp/938653861X/ref=sr_1_2?crid=6TCCO58SIOL6&keywords=mandala&qid=1697460852&sprefix=manda%2Caps%2C345&sr=8-2',
                         buttons: [
                             {
                                 text: "Buy Now",
-                                postback: `https://example.com/buy-product/${productInfo.name}`,
+                                postback: 'https://www.amazon.com/Mandala-Colouring-Adults-Paperback-Editorial/dp/938653861X/ref=sr_1_2?crid=6TCCO58SIOL6&keywords=mandala&qid=1697460852&sprefix=manda%2Caps%2C345&sr=8-2',
                             },
                             {
                                 text: "More Details",
